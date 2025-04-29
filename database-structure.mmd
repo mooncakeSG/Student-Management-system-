@@ -1,0 +1,71 @@
+erDiagram
+    Student ||--o{ Enrollment : has
+    Student ||--o{ Grade : receives
+    Course ||--o{ Enrollment : has
+    Course ||--o{ Grade : has
+    Department ||--o{ Course : offers
+    Department ||--o{ Instructor : employs
+    Instructor ||--o{ Course : teaches
+
+    Student {
+        int id PK
+        string name
+        string email
+        string phone
+        date dateOfBirth
+        string address
+        string gender
+        string status
+        date createdAt
+        date updatedAt
+    }
+
+    Course {
+        int id PK
+        string courseCode
+        string courseName
+        int departmentId FK
+        int credits
+        int instructorId FK
+        date createdAt
+        date updatedAt
+    }
+
+    Department {
+        int id PK
+        string departmentCode
+        string departmentName
+        int headOfDepartmentId FK
+        date createdAt
+        date updatedAt
+    }
+
+    Instructor {
+        int id PK
+        string name
+        string email
+        string phone
+        int departmentId FK
+        string designation
+        date createdAt
+        date updatedAt
+    }
+
+    Enrollment {
+        int id PK
+        int studentId FK
+        int courseId FK
+        date enrollmentDate
+        string status
+        date createdAt
+        date updatedAt
+    }
+
+    Grade {
+        int id PK
+        int studentId FK
+        int courseId FK
+        string grade
+        date createdAt
+        date updatedAt
+    } 
